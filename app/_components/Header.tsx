@@ -49,7 +49,7 @@ const Header = () => {
         </div>
 
         {/* CENTER MENU (DESKTOP) */}
-        <div className="hidden lg:flex">
+        <div className="hidden lg:flex font-mono">
           <ul className="menu menu-horizontal gap-6 text-lg font-stretch-100%">
             <li>
               <Link href="/" className="hover:text-primary transition">
