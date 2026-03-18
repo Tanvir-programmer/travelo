@@ -1,22 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google"; // Professional pairing
 import "./globals.css";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// 1. Heading Font: Montserrat for that "Adventure" feel
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// 2. Body Font: Inter for clean, readable booking details
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Travelo",
-  description: "Travel does fresh mind",
+  title: "Travelo | Your AI Travel Companion",
+  description: "Discover hidden gems and plan your perfect trip with AI-powered insights.",
 };
 
 export default function RootLayout({
@@ -25,13 +29,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light"> 
+      {/* data-theme helps daisyUI stay consistent */}
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${montserrat.variable} ${inter.variable} font-sans antialiased`}
       >
-        <Header></Header>
-        {children}
-        <Footer></Footer>
+        {/* The wrapper below ensures the footer stays at the bottom */}
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          
+          {/* Main content expands to fill available space */}
+          <main className="flex-grow">
+            {children}
+          </main>
+          
+          <Footer />
+        </div>
       </body>
     </html>
   );

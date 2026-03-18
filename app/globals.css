@@ -1,2 +1,24 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@theme {
+  /* Mapping Fonts */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui;
+  --font-heading: var(--font-montserrat), sans-serif;
+
+  /* Brand Colors */
+  --color-primary: #0ea5e9;    /* Sky Blue */
+  --color-secondary: #f59e0b;  /* Adventure Amber */
+  --color-accent: #10b981;     /* Nature Green */
+}
+
+@layer base {
+  body {
+    @apply font-sans text-slate-900 bg-white;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight;
+  }
+}
