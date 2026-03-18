@@ -1,3 +1,9 @@
+import Hero from "./_components/Hero";
+
 export default function Home() {
-  return <div className="text-primary">Hello This is a Travel Page!</div>;
+  return (
+    <div>
+      <Hero></Hero>
+    </div>
+  );
 }

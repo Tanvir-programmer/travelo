@@ -50,10 +50,20 @@ const Header = () => {
 
         {/* CENTER MENU (DESKTOP) */}
         <div className="hidden lg:flex">
-          <ul className="menu menu-horizontal gap-6 text-lg font-semibold">
+          <ul className="menu menu-horizontal gap-6 text-lg font-stretch-100%">
             <li>
               <Link href="/" className="hover:text-primary transition">
                 Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/destinations" className="hover:text-primary transition">
+                Destinations
+              </Link>
+            </li>
+            <li>
+              <Link href="/booking" className="hover:text-primary transition">
+                Booking
               </Link>
             </li>
             <li>

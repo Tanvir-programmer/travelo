@@ -6,29 +6,18 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "images.unsplash.com",
-        pathname: "**",
-      },
-      {
-        protocol: "https",
-        hostname: "picsum.photos",
-        pathname: "**",
-      },
-      {
-        protocol: "https",
-        hostname: "plus.unsplash.com",
-        pathname: "**",
+        pathname: "/**",
       },
       {
         protocol: "https",
         hostname: "images.pexels.com",
-        pathname: "**",
+        pathname: "/**",
       },
-      // Add your own backend/storage URL here if needed
-      // {
-      //   protocol: 'https',
-      //   hostname: 'your-api-storage.com',
-      //   pathname: '**',
-      // },
+      {
+        protocol: "https",
+        hostname: "i.ibb.co", // ✅ FIXED
+        pathname: "/**",
+      },
     ],
   },
 };
