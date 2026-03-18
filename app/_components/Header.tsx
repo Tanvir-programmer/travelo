@@ -3,7 +3,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="bg-base-100 shadow-sm">
+    <div className="bg-base-100 shadow-sm sticky top-0 z-50 ">
       <div className="navbar container mx-auto px-4 justify-between">
         {/* LEFT SIDE */}
         <div className="flex items-center gap-2">
@@ -57,7 +57,10 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link href="/destinations" className="hover:text-primary transition">
+              <Link
+                href="/destinations"
+                className="hover:text-primary transition"
+              >
                 Destinations
               </Link>
             </li>

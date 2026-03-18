@@ -29,9 +29,9 @@ const config: ConfigWithDaisy = {
         heading: ["var(--font-montserrat)", "sans-serif"],
       },
       colors: {
-        primary: "#0ea5e9",   // Sky Blue
+        primary: "#5c98f2", // Sky Blue
         secondary: "#f59e0b", // Adventure Amber
-        accent: "#10b981",    // Nature Green
+        accent: "#10b981", // Nature Green
       },
     },
   },
