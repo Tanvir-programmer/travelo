@@ -25,7 +25,7 @@ const damion = Damion({
 });
 
 export const metadata: Metadata = {
-  title: "Travelo | Your AI Travel Companion",
+  title: "Travelo Book Your next Trip",
   description:
     "Discover hidden gems and plan your perfect trip with AI-powered insights.",
 };

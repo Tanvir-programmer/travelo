@@ -1,5 +1,6 @@
 import React from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import Image from "next/image";
 
 const Contact: React.FC = () => {
   return (
@@ -94,9 +95,10 @@ const Contact: React.FC = () => {
 
             {/* Visual Element (Decorative) */}
             <div className="h-64 bg-gray-100 rounded-[40px] relative overflow-hidden flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-700">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80"
                 alt="Map view"
+                fill
                 className="absolute inset-0 w-full h-full object-cover opacity-50"
               />
               <div className="relative z-10 bg-white px-6 py-3 rounded-full shadow-lg font-bold">

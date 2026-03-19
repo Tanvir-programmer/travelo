@@ -1,9 +1,10 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 
 const Header = () => {
   return (
-    <div className="bg-base-100 shadow-sm sticky top-0 z-50 ">
+    <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm">
       <div className="navbar container mx-auto px-4 justify-between">
         {/* LEFT SIDE */}
         <div className="flex items-center gap-2">
@@ -28,10 +29,37 @@ const Header = () => {
 
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-3 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-3 shadow-lg bg-white rounded-xl w-56"
             >
               <li>
                 <Link href="/">Home</Link>
+              </li>
+
+              {/* Dropdown inside mobile */}
+              <li>
+                <details>
+                  <summary>Destinations</summary>
+                  <ul className="p-2">
+                    <li>
+                      <Link href="/destinations">All Destinations</Link>
+                    </li>
+                    <li>
+                      <Link href="/destinations/popular">Popular</Link>
+                    </li>
+                    <li>
+                      <Link href="/destinations/international">
+                        International
+                      </Link>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+
+              <li>
+                <Link href="/packages">Travel Packages</Link>
+              </li>
+              <li>
+                <Link href="/booking">Booking</Link>
               </li>
               <li>
                 <Link href="/about">About Us</Link>
@@ -43,37 +71,72 @@ const Header = () => {
           </div>
 
           {/* LOGO */}
-          <Link href="/" className="text-2xl font-bold text-primary">
+          <Link
+            href="/"
+            className="text-2xl font-extrabold tracking-tight text-primary"
+          >
             Travel<span className="text-secondary">O</span>
           </Link>
         </div>
 
         {/* CENTER MENU (DESKTOP) */}
-        <div className="hidden lg:flex font-normal">
-          <ul className="menu menu-horizontal gap-6 text-lg font-stretch-100%">
+        <div className="hidden lg:flex">
+          <ul className="menu menu-horizontal gap-6 text-[15px] font-medium">
             <li>
-              <Link href="/" className="hover:text-primary transition">
+              <Link className="hover:text-primary transition" href="/">
                 Home
               </Link>
             </li>
+
+            {/* 🔥 Dropdown */}
+            <li className="relative group">
+              <span className="cursor-pointer hover:text-primary transition">
+                Destinations ▾
+              </span>
+
+              <ul className="absolute left-0 top-10 bg-white shadow-xl rounded-xl p-3 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                <li>
+                  <Link href="/destinations" className="hover:text-primary">
+                    All Destinations
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/destinations/popular"
+                    className="hover:text-primary"
+                  >
+                    Popular Places
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/destinations/international"
+                    className="hover:text-primary"
+                  >
+                    International Tours
+                  </Link>
+                </li>
+              </ul>
+            </li>
+
             <li>
-              <Link
-                href="/destinations"
-                className="hover:text-primary transition"
-              >
-                Destinations
+              <Link href="/packages" className="hover:text-primary transition">
+                Travel Packages
               </Link>
             </li>
+
             <li>
               <Link href="/booking" className="hover:text-primary transition">
                 Booking
               </Link>
             </li>
+
             <li>
               <Link href="/about" className="hover:text-primary transition">
                 About Us
               </Link>
             </li>
+
             <li>
               <Link href="/blog" className="hover:text-primary transition">
                 Blog
@@ -83,11 +146,14 @@ const Header = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="hidden lg:flex items-center gap-4">
-          <Link href="/login" className="btn btn-outline btn-primary">
+        <div className="hidden lg:flex items-center gap-3">
+          <Link
+            href="/login"
+            className="btn btn-outline btn-primary rounded-xl px-5"
+          >
             Login
           </Link>
-          <Link href="/signup" className="btn btn-primary">
+          <Link href="/signup" className="btn btn-primary rounded-xl px-5">
             Sign Up
           </Link>
         </div>
