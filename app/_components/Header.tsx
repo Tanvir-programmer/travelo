@@ -65,6 +65,11 @@ const Header = () => {
                 <Link href="/about">About Us</Link>
               </li>
               <li>
+                <Link href="/contact" className="hover:text-primary transition">
+                  Contact Us
+                </Link>
+              </li>
+              <li>
                 <Link href="/blog">Blog</Link>
               </li>
             </ul>
@@ -134,6 +139,11 @@ const Header = () => {
             <li>
               <Link href="/about" className="hover:text-primary transition">
                 About Us
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="hover:text-primary transition">
+                Contact Us
               </Link>
             </li>
 
