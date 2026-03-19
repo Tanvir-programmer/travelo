@@ -8,23 +8,75 @@ const slides = [
     id: 1,
     image:
       "https://i.ibb.co.com/svNVxmKG/photo-1587302525159-2363f54affd4.avif",
-    title: "Plan Your Trip, Your Way.",
+    title: "Relax at Cox’s Bazar",
     description:
-      "Perfect for customized travel experiences — tailored flights, stays, and tours just for you.",
+      "Experience the world like never before with our luxury travel packages.",
   },
   {
     id: 2,
-    image: "https://i.ibb.co.com/FLpRhHSz/sajek.jpg",
-    title: "Explore Hidden Gems.",
+    image: "https://i.ibb.co.com/d0Cyp0Fy/Kaptai-Lake-19833365911.jpg",
+    title: "Adventure at Rangamati",
     description:
-      "Discover off-the-beaten-path destinations with our expert local guides.",
+      "Sail across sparkling lakes, explore hilltop viewpoints, and immerse yourself in the beauty of Rangamati’s hills and waters.",
   },
   {
     id: 3,
-    image: "https://i.ibb.co.com/TxfX5Dvb/pexels-ferdous-26673370.jpg",
-    title: "Adventure Awaits.",
+    image: "https://i.ibb.co.com/YBcchb7h/Sundarban-Tiger.jpg",
+    title: "Explore the Sundarbans",
     description:
       "Experience the world like never before with our luxury travel packages.",
+  },
+  {
+    id: 4,
+    image:
+      "https://i.ibb.co.com/cSkcxB0g/Saint-Martins-Island-with-boats-in-foreground.jpg",
+    title: "Serenity at Saint Martin",
+    description:
+      "Experience the world like never before with our luxury travel packages.",
+  },
+  {
+    id: 5,
+    image:
+      "https://i.ibb.co.com/RTBxkf1Z/best-tea-of-sreemangal-tea-bazar-bd.webp", // replace with a real Sreemangal image
+    title: "Tranquility in Sreemangal",
+    description:
+      "Wander through lush tea gardens and serene landscapes — Sreemangal is your perfect escape into nature’s heart.",
+  },
+  {
+    id: 6,
+    image: "https://i.ibb.co.com/FLpRhHSz/sajek.jpg",
+    title: "Escape to Sajek Valley",
+    description:
+      "Experience the world like never before with our luxury travel packages.",
+  },
+  {
+    id: 7,
+    image: "https://i.ibb.co.com/bgZtwcXy/Bandarban.jpg",
+    title: "Mystical Adventures in Bandarban",
+    description:
+      "Journey through misty hills, hidden waterfalls, and lush green valleys — Bandarban promises unforgettable adventures for every explorer.",
+  },
+  {
+    id: 8,
+    image: "https://i.ibb.co.com/YFkKRMzQ/jaflong.jpg",
+    title: "Breathtaking Views at Jaflong",
+    description:
+      "Marvel at the stunning stone-filled riverbanks and the majestic hills of Jaflong — a paradise where nature’s beauty takes your breath away.",
+  },
+  {
+    id: 9,
+    image: "https://i.ibb.co.com/7Js6f9zH/kuakata-patuakhai-jpg.webp",
+    title: "Sunset Bliss at Kuakata Beach",
+    description:
+      "Walk along endless sandy shores, watch mesmerizing sunsets over the Bay of Bengal, and feel the soothing sea breeze at Kuakata Beach.",
+  },
+  {
+    id: 10,
+    image:
+      "https://i.ibb.co.com/bjRYd7Jr/photo-1662563013196-f71e724704aa.avif",
+    title: "Step Back in Time at Lalbagh Fort",
+    description:
+      "Explore the majestic Mughal-era architecture, serene gardens, and rich history of Lalbagh Fort — a captivating journey into Dhaka’s heritage.",
   },
 ];
 
