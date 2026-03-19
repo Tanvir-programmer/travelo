@@ -7,22 +7,21 @@ const slides = [
   {
     id: 1,
     image:
-      "https://i.ibb.co.com/yFM2X1xt/pexels-jacint-bofill-1745787-33483502.jpg",
+      "https://i.ibb.co.com/svNVxmKG/photo-1587302525159-2363f54affd4.avif",
     title: "Plan Your Trip, Your Way.",
     description:
       "Perfect for customized travel experiences — tailored flights, stays, and tours just for you.",
   },
   {
     id: 2,
-    image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80",
+    image: "https://i.ibb.co.com/FLpRhHSz/sajek.jpg",
     title: "Explore Hidden Gems.",
     description:
       "Discover off-the-beaten-path destinations with our expert local guides.",
   },
   {
     id: 3,
-    image: "https://i.ibb.co.com/hxvY3QhB/pexels-ollivves-1433052.jpg",
+    image: "https://i.ibb.co.com/TxfX5Dvb/pexels-ferdous-26673370.jpg",
     title: "Adventure Awaits.",
     description:
       "Experience the world like never before with our luxury travel packages.",
