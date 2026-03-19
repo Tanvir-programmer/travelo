@@ -1,6 +1,9 @@
+import Contact from "./_components/Contact";
 import Hero from "./_components/Hero";
 import Packages from "./_components/Packages";
 import PriorityPage from "./_components/PriorityPage";
+import Reviews from "./_components/Reviews";
+
 import TopDestinations from "./_components/TopDestinations";
 import Trustpoint from "./_components/Trustpoint";
 
@@ -12,6 +15,8 @@ export default function Home() {
       <TopDestinations></TopDestinations>
       <PriorityPage></PriorityPage>
       <Trustpoint></Trustpoint>
+      <Reviews></Reviews>
+      <Contact></Contact>
     </div>
   );
 }
