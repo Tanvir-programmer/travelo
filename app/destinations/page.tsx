@@ -9,6 +9,7 @@ import {
   Loader2,
   Info,
 } from "lucide-react";
+import Image from "next/image";
 
 interface Destination {
   _id: string;
@@ -107,9 +108,10 @@ const TravelODestinations: React.FC = () => {
             >
               {/* Image with Soft Shadow */}
               <div className="relative h-72 rounded-[2.5rem] overflow-hidden shadow-xl shadow-slate-200/50 mb-6">
-                <img
+                <Image
                   src={dest.image}
                   alt={dest.name}
+                  fill
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
 

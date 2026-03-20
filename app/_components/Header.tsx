@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React from "react";
+import LoginButton from "./LoginButton";
 
 const Header = () => {
   return (
@@ -157,12 +158,7 @@ const Header = () => {
 
         {/* RIGHT SIDE */}
         <div className="hidden lg:flex items-center gap-3">
-          <Link
-            href="/login"
-            className="btn btn-outline btn-primary rounded-xl px-5"
-          >
-            Login
-          </Link>
+          <LoginButton></LoginButton>
           <Link href="/signup" className="btn btn-primary rounded-xl px-5">
             Sign Up
           </Link>
