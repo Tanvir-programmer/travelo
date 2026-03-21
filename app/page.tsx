@@ -1,3 +1,4 @@
+import ContactPage from "./_components/Contact";
 import Contact from "./_components/Contact";
 import Hero from "./_components/Hero";
 import Packages from "./_components/Packages";
@@ -16,7 +17,7 @@ export default function Home() {
       <PriorityPage></PriorityPage>
       <Trustpoint></Trustpoint>
       <Reviews></Reviews>
-      <Contact></Contact>
+      <ContactPage></ContactPage>
     </div>
   );
 }
