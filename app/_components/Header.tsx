@@ -159,7 +159,7 @@ const Header = () => {
         {/* RIGHT SIDE */}
         <div className="hidden lg:flex items-center gap-3">
           <LoginButton></LoginButton>
-          <Link href="/signup" className="btn btn-primary rounded-xl px-5">
+          <Link href="/register" className="btn btn-primary rounded-xl px-5">
             Sign Up
           </Link>
         </div>
