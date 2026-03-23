@@ -7,10 +7,12 @@ import Reviews from "./_components/Reviews";
 
 import TopDestinations from "./_components/TopDestinations";
 import Trustpoint from "./_components/Trustpoint";
+import UserCard from "./_components/UserCard";
 
 export default function Home() {
   return (
     <div>
+      <UserCard></UserCard>
       <Hero></Hero>
       <Packages></Packages>
       <TopDestinations></TopDestinations>

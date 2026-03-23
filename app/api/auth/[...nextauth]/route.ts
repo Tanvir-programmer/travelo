@@ -1,47 +1,46 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 const userLists = [
-  { name: "hablu", password: "12345" },
-  { name: "bablu", password: "54321" },
-  { name: "dablu", password: "56789" },
+  { username: "hablu", password: "12345" },
+  { username: "bablu", password: "54321" },
+  { username: "dablu", password: "56789" },
 ];
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
 
       credentials: {
-        username: {
-          label: "Username",
-          type: "text",
-          placeholder: "Enter Your Name",
-        },
-        password: {
-          label: "Password",
-          type: "password",
-          placeholder: "Enter Password",
-        },
-        secretCode: {
-          label: "Secret Code",
-          type: "password",
-          placeholder: "Enter Code",
-        },
+        username: { label: "Username", type: "text" },
+        password: { label: "Password", type: "password" },
       },
 
       async authorize(credentials) {
-        // Example login logic
-        const { username, password, secretCode } = credentials;
-        const user = userLists.find((u) => u.name === username);
-        if (!user) return null;
-        const isPasswordOk = user.password == password;
-        if (!isPasswordOk) return null;
+        if (!credentials) return null;
 
-        return null;
+        const user = userLists.find((u) => u.username === credentials.username);
+
+        if (!user || user.password !== credentials.password) {
+          return null;
+        }
+
+        // 👇 must return user with name field
+        return {
+          id: user.username,
+          name: user.username,
+        };
       },
     }),
   ],
+
+  callbacks: {
+    async session({ session, token }) {
+      // session.user.name already comes from `name`
+      return session;
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);

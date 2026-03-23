@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 
+import NextAuthProvider from "./provider/NextAuthProvider";
+
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
@@ -36,17 +38,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
-      <body
-        // 3. Added damion.variable to the className list
-        className={`${montserrat.variable} ${inter.variable} ${damion.variable} font-sans antialiased`}
-      >
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </div>
-      </body>
-    </html>
+    <NextAuthProvider>
+      <html lang="en" data-theme="light">
+        <body
+          // 3. Added damion.variable to the className list
+          className={`${montserrat.variable} ${inter.variable} ${damion.variable} font-sans antialiased`}
+        >
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
+        </body>
+      </html>
+    </NextAuthProvider>
   );
 }
