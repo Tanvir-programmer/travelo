@@ -1,9 +1,10 @@
 "use server";
 
-import { dbConnect } from "../../lib/dbConnector"; // Adjust path based on your file structure
+import { dbConnect } from "../../lib/dbConnector";
 import { Document } from "mongodb";
+import bcrypt from "bcrypt";
 
-// 1. Define the User Interface to match your Register form
+// 1. Define the User Interface
 interface UserPayload extends Document {
   name: string;
   email: string;
@@ -14,10 +15,9 @@ interface UserPayload extends Document {
 
 const postUser = async (payload: UserPayload) => {
   try {
-    // 2. Connect to the "users" collection with the specific type
     const usersCollection = dbConnect<UserPayload>("users");
 
-    // 3. Check if the user already exists to prevent duplicates
+    // 2. Check existing user
     const existingUser = await usersCollection.findOne({
       email: payload.email,
     });
@@ -26,18 +26,24 @@ const postUser = async (payload: UserPayload) => {
       return { success: false, message: "User already exists" };
     }
 
-    // 4. Insert the new user
+    // 3. Hash password before saving
+    let hashedPassword = undefined;
+    if (payload.password) {
+      const saltRounds = 10;
+      hashedPassword = await bcrypt.hash(payload.password, saltRounds);
+    }
+
+    // 4. Insert user with hashed password
     const result = await usersCollection.insertOne({
       ...payload,
+      password: hashedPassword,
       createdAt: new Date().toISOString(),
     });
-
-    console.log("User created with ID:", result.insertedId);
 
     return {
       success: true,
       message: "User registered successfully",
-      id: result.insertedId,
+      id: result.insertedId.toString(),
     };
   } catch (error) {
     console.error("Database Error:", error);
