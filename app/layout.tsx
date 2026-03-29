@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Montserrat, Inter, Damion } from "next/font/google"; // 1. Added Damion here
+import { Montserrat, Inter, Damion } from "next/font/google";
 import "./globals.css";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
-
 import NextAuthProvider from "./provider/NextAuthProvider";
 
 const montserrat = Montserrat({
@@ -18,7 +17,6 @@ const inter = Inter({
   display: "swap",
 });
 
-// 2. Configure the script font for the "Backpack" style
 const damion = Damion({
   variable: "--font-damion",
   subsets: ["latin"],
@@ -38,19 +36,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <NextAuthProvider>
-      <html lang="en" data-theme="light">
-        <body
-          // 3. Added damion.variable to the className list
-          className={`${montserrat.variable} ${inter.variable} ${damion.variable} font-sans antialiased`}
-        >
+    <html lang="en" data-theme="light">
+      <body
+        suppressHydrationWarning
+        className={`${montserrat.variable} ${inter.variable} ${damion.variable} font-sans antialiased`}
+      >
+        <NextAuthProvider>
           <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-grow">{children}</main>
             <Footer />
           </div>
-        </body>
-      </html>
-    </NextAuthProvider>
+        </NextAuthProvider>
+      </body>
+    </html>
   );
 }

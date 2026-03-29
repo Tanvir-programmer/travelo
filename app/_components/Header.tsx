@@ -2,8 +2,11 @@
 import Link from "next/link";
 import React from "react";
 import LoginButton from "./LoginButton";
+import { useSession } from "next-auth/react";
 
 const Header = () => {
+  const { data: session } = useSession();
+
   return (
     <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm">
       <div className="navbar container mx-auto px-4 justify-between">
@@ -35,8 +38,6 @@ const Header = () => {
               <li>
                 <Link href="/">Home</Link>
               </li>
-
-              {/* Dropdown inside mobile */}
               <li>
                 <details>
                   <summary>Destinations</summary>
@@ -55,7 +56,6 @@ const Header = () => {
                   </ul>
                 </details>
               </li>
-
               <li>
                 <Link href="/packages">Travel Packages</Link>
               </li>
@@ -66,9 +66,7 @@ const Header = () => {
                 <Link href="/about">About Us</Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-primary transition">
-                  Contact Us
-                </Link>
+                <Link href="/contact">Contact Us</Link>
               </li>
               <li>
                 <Link href="/blog">Blog</Link>
@@ -93,13 +91,10 @@ const Header = () => {
                 Home
               </Link>
             </li>
-
-            {/* 🔥 Dropdown */}
             <li className="relative group">
               <span className="cursor-pointer hover:text-primary transition">
                 Destinations ▾
               </span>
-
               <ul className="absolute left-0 top-10 bg-white shadow-xl rounded-xl p-3 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                 <li>
                   <Link href="/destinations" className="hover:text-primary">
@@ -124,19 +119,16 @@ const Header = () => {
                 </li>
               </ul>
             </li>
-
             <li>
               <Link href="/packages" className="hover:text-primary transition">
                 Travel Packages
               </Link>
             </li>
-
             <li>
               <Link href="/booking" className="hover:text-primary transition">
                 Booking
               </Link>
             </li>
-
             <li>
               <Link href="/about" className="hover:text-primary transition">
                 About Us
@@ -147,7 +139,6 @@ const Header = () => {
                 Contact Us
               </Link>
             </li>
-
             <li>
               <Link href="/blog" className="hover:text-primary transition">
                 Blog
@@ -158,10 +149,13 @@ const Header = () => {
 
         {/* RIGHT SIDE */}
         <div className="hidden lg:flex items-center gap-3">
-          <LoginButton></LoginButton>
-          <Link href="/register" className="btn btn-primary rounded-xl px-5">
-            Sign Up
-          </Link>
+          <LoginButton />
+          {/* ✅ Hide Sign Up when logged in */}
+          {!session && (
+            <Link href="/register" className="btn btn-primary rounded-xl px-5">
+              Sign Up
+            </Link>
+          )}
         </div>
       </div>
     </div>
