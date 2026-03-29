@@ -9,13 +9,11 @@ import {
   Chrome,
   ShieldCheck,
 } from "lucide-react";
-import postUser from "../../app/actions/server/auth";
+import { postUser } from "../actions/server/register";
 import toast, { Toaster } from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const Register = () => {
-  const router = useRouter();
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -58,7 +56,14 @@ const Register = () => {
           photoURL: "",
           role: "user",
         });
-        router.push("/"); // ✅ Redirect to home
+
+        // ✅ Auto login after registration
+        await signIn("credentials", {
+          email,
+          password,
+          redirect: true,
+          callbackUrl: "/",
+        });
       } else {
         toast.error(response?.message || "Registration failed. Try again.");
       }
@@ -120,7 +125,7 @@ const Register = () => {
                 value={formData.name}
                 required
                 className="w-full pl-12 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 outline-none transition-all"
-                placeholder="Md Tanvir Rahman"
+                placeholder="Enter Your Name"
                 onChange={handleChange}
               />
             </div>

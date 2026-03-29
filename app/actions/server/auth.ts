@@ -1,54 +1,68 @@
-"use server";
-
-import { dbConnect } from "../../lib/dbConnector";
-import { Document } from "mongodb";
+import "server-only"; // ✅ add this — prevents client bundle inclusion
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { dbConnect } from "@/app/lib/dbConnector";
 import bcrypt from "bcrypt";
 
-// 1. Define the User Interface
-interface UserPayload extends Document {
-  name: string;
-  email: string;
-  password?: string;
-  photoURL: string;
-  createdAt: string;
-}
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  providers: [
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) return null;
 
-const postUser = async (payload: UserPayload) => {
-  try {
-    const usersCollection = dbConnect<UserPayload>("users");
+        const usersCollection = dbConnect("users");
+        const user = await usersCollection.findOne({
+          email: credentials.email,
+        });
 
-    // 2. Check existing user
-    const existingUser = await usersCollection.findOne({
-      email: payload.email,
-    });
+        if (!user) return null;
 
-    if (existingUser) {
-      return { success: false, message: "User already exists" };
-    }
+        const isValid = await bcrypt.compare(
+          credentials.password as string,
+          user.password,
+        );
 
-    // 3. Hash password before saving
-    let hashedPassword = undefined;
-    if (payload.password) {
-      const saltRounds = 10;
-      hashedPassword = await bcrypt.hash(payload.password, saltRounds);
-    }
+        if (!isValid) return null;
 
-    // 4. Insert user with hashed password
-    const result = await usersCollection.insertOne({
-      ...payload,
-      password: hashedPassword,
-      createdAt: new Date().toISOString(),
-    });
+        // ✅ All values are plain strings — safe to pass to client
+        return {
+          id: user._id.toString(),
+          name: user.name,
+          email: user.email,
+          image: user.photoURL,
+          role: user.role,
+        };
+      },
+    }),
+  ],
 
-    return {
-      success: true,
-      message: "User registered successfully",
-      id: result.insertedId.toString(),
-    };
-  } catch (error) {
-    console.error("Database Error:", error);
-    return { success: false, message: "Failed to create user" };
-  }
-};
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.name    = user.name;
+        token.picture = user.image;
+        token.role    = (user as any).role;
+      }
+      return token;
+    },
 
-export default postUser;
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.name  = token.name    as string;
+        session.user.image = token.picture as string;
+        (session.user as any).role = token.role;
+      }
+      return session;
+    },
+  },
+
+  session: { strategy: "jwt" },
+  pages: {
+    signIn: "/login",
+  },
+});

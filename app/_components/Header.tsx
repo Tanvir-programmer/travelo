@@ -71,6 +71,21 @@ const Header = () => {
               <li>
                 <Link href="/blog">Blog</Link>
               </li>
+
+              {/* ✅ Login/Avatar in mobile menu */}
+              <li className="mt-2">
+                <LoginButton />
+              </li>
+              {!session && (
+                <li>
+                  <Link
+                    href="/register"
+                    className="btn btn-primary rounded-xl w-full mt-1"
+                  >
+                    Sign Up
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -147,12 +162,14 @@ const Header = () => {
           </ul>
         </div>
 
-        {/* RIGHT SIDE */}
-        <div className="hidden lg:flex items-center gap-3">
+        {/* RIGHT SIDE - ✅ visible on all screen sizes */}
+        <div className="flex items-center gap-3">
           <LoginButton />
-          {/* ✅ Hide Sign Up when logged in */}
           {!session && (
-            <Link href="/register" className="btn btn-primary rounded-xl px-5">
+            <Link
+              href="/register"
+              className="btn btn-primary rounded-xl px-5 hidden lg:flex"
+            >
               Sign Up
             </Link>
           )}

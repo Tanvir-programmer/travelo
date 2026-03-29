@@ -1,7 +1,20 @@
-import React from "react";
+"use client";
+
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 const Booking = () => {
-  return <div>welcome to booking page</div>;
+  const router = useRouter();
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("token");
+
+    if (!isLoggedIn) {
+      router.push("/login");
+    }
+  }, [router]);
+
+  return <div>Welcome to booking page</div>;
 };
 
 export default Booking;
