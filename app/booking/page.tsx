@@ -10,7 +10,7 @@ const Booking = () => {
     const isLoggedIn = localStorage.getItem("token");
 
     if (!isLoggedIn) {
-      router.push("/login");
+      router.push("/register");
     }
   }, [router]);
 
