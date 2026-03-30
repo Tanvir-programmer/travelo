@@ -46,12 +46,10 @@ const Header = () => {
                       <Link href="/destinations">All Destinations</Link>
                     </li>
                     <li>
-                      <Link href="/destinations/popular">Popular</Link>
+                      <Link href="/popular">Popular</Link>
                     </li>
                     <li>
-                      <Link href="/destinations/international">
-                        International
-                      </Link>
+                      <Link href="internationalTour">International</Link>
                     </li>
                   </ul>
                 </details>
@@ -117,18 +115,12 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/destinations/popular"
-                    className="hover:text-primary"
-                  >
+                  <Link href="/popular" className="hover:text-primary">
                     Popular Places
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/destinations/international"
-                    className="hover:text-primary"
-                  >
+                  <Link href="internationalTour" className="hover:text-primary">
                     International Tours
                   </Link>
                 </li>
