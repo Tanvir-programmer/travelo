@@ -10,6 +10,7 @@ import {
   Clock,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 // Define the shape of your Package data
 interface TravelPackage {
@@ -104,11 +105,17 @@ const TravelPackages: React.FC = () => {
       <main className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12">
           {filteredPackages.map((pkg) => (
-            <div key={pkg._id || pkg.id} className="group flex flex-col transition-all duration-500">
+            <div
+              key={pkg._id || pkg.id}
+              className="group flex flex-col transition-all duration-500"
+            >
               <div className="relative h-72 rounded-[2.5rem] overflow-hidden shadow-xl shadow-slate-200/50 mb-6 bg-slate-200">
                 {/* Image Handling */}
                 <Image
-                  src={pkg.image || `https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop`}
+                  src={
+                    pkg.image ||
+                    `https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop`
+                  }
                   alt={pkg.package_name}
                   fill
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -121,10 +128,10 @@ const TravelPackages: React.FC = () => {
                 </div>
 
                 <div className="absolute top-6 right-6">
-                   <div className="bg-slate-900/40 backdrop-blur-md px-3 py-1.5 rounded-2xl flex items-center gap-1.5 border border-white/20">
+                  <div className="bg-slate-900/40 backdrop-blur-md px-3 py-1.5 rounded-2xl flex items-center gap-1.5 border border-white/20">
                     <Clock className="h-3 w-3 text-white" />
                     <span className="text-[10px] font-bold text-white uppercase tracking-tight">
-                        {pkg.duration}
+                      {pkg.duration}
                     </span>
                   </div>
                 </div>
@@ -151,7 +158,10 @@ const TravelPackages: React.FC = () => {
 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {pkg.activities.slice(0, 2).map((act, i) => (
-                    <span key={i} className="text-[9px] font-bold uppercase tracking-tighter text-slate-400 bg-slate-100 px-2 py-1 rounded-md">
+                    <span
+                      key={i}
+                      className="text-[9px] font-bold uppercase tracking-tighter text-slate-400 bg-slate-100 px-2 py-1 rounded-md"
+                    >
                       #{act}
                     </span>
                   ))}
@@ -167,9 +177,12 @@ const TravelPackages: React.FC = () => {
                     </span>
                   </div>
 
-                  <button className="h-14 w-14 rounded-full bg-slate-100 text-slate-900 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition-all duration-300 shadow-sm group/btn active:scale-90">
+                  <Link
+                    href={`/packages/${pkg.id}`}
+                    className="h-14 w-14 rounded-full bg-slate-100 text-slate-900 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition-all duration-300 shadow-sm group/btn active:scale-90"
+                  >
                     <ArrowUpRight className="h-6 w-6 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -179,8 +192,12 @@ const TravelPackages: React.FC = () => {
         {filteredPackages.length === 0 && (
           <div className="text-center py-40 bg-white rounded-[3rem] border border-slate-100 shadow-sm mt-10">
             <Compass className="h-14 w-14 text-slate-200 mx-auto mb-6" />
-            <h3 className="text-2xl font-bold text-slate-800">No packages found</h3>
-            <p className="text-slate-500 mt-2">Try searching for "Sylhet" or "Luxury".</p>
+            <h3 className="text-2xl font-bold text-slate-800">
+              No packages found
+            </h3>
+            <p className="text-slate-500 mt-2">
+              Try searching for Sylhet or Luxury.
+            </p>
           </div>
         )}
       </main>

@@ -49,7 +49,7 @@ const Header = () => {
                       <Link href="/popular">Popular</Link>
                     </li>
                     <li>
-                      <Link href="internationalTour">International</Link>
+                      <Link href="/tours">International</Link>
                     </li>
                   </ul>
                 </details>
@@ -120,7 +120,7 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="internationalTour" className="hover:text-primary">
+                  <Link href="/tours" className="hover:text-primary">
                     International Tours
                   </Link>
                 </li>
